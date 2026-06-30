@@ -1,8 +1,8 @@
 # FocusGuard - Productivity Chrome Extension
 
 <div align="center">
-  <a href="https://github.com/Mattys03/FocusGuardExt/archive/refs/heads/master.zip">
-    <img src="https://img.shields.io/badge/📥_Download_Latest_Version-4285F4?style=for-the-badge&logo=googlechrome" alt="Download ZIP" />
+  <a href="https://github.com/Mattys03/FocusGuardExt/releases/latest">
+    <img src="https://img.shields.io/badge/📦_Download_Release-4285F4?style=for-the-badge&logo=googlechrome" alt="Download Release" />
   </a>
 </div>
 
