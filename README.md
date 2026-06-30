@@ -1,4 +1,4 @@
-# FocusGuard - Productivity Chrome Extension
+# FocusGuard - Extensão de Produtividade (Chrome)
 
 <div align="center">
   <a href="https://github.com/Mattys03/FocusGuardExt/releases/latest">
@@ -6,39 +6,35 @@
   </a>
 </div>
 
-![Platform](https://img.shields.io/badge/Platform-Google%20Chrome-blue)
-![Tech](https://img.shields.io/badge/Tech-Manifest%20V3%20%7C%20JavaScript-green)
-![License](https://img.shields.io/badge/License-MIT-purple)
+![Platform](https://img.shields.io/badge/Plataforma-Google%20Chrome-blue)
+![Tech](https://img.shields.io/badge/Tecnologia-Manifest%20V3%20%7C%20JavaScript-green)
+![License](https://img.shields.io/badge/Licen%C3%A7a-MIT-purple)
 
-**FocusGuard** is a robust Google Chrome extension built on Manifest V3. It is designed to block distractions and help users maintain deep focus during work sessions by leveraging background service workers, content scripts, and real-time DOM manipulation.
+**FocusGuard** é uma extensão robusta de produtividade construída sob o padrão **Manifest V3** da Chrome Web Store. Ela foi arquitetada para bloquear distrações online e garantir sessões de "Deep Work" (Foco Profundo) utilizando recursos avançados de *Service Workers* em background e manipulação em tempo real da árvore DOM (Document Object Model).
 
-## 🚀 Features
+## 🚀 Funcionalidades Principais
 
-- **Distraction Blocking:** Intercepts navigation to time-wasting sites.
-- **Manifest V3 Architecture:** Built using the latest, most secure, and performant extension standards required by the Chrome Web Store.
-- **Service Workers:** Uses background workers for low memory footprint and efficient event listening.
-- **DOM Injection:** Uses content scripts and CSS injection to modify distracting elements on the fly.
-- **Popup UI:** Clean and responsive popup interface for managing focus sessions and blocked domains.
+- **Bloqueio de Distrações:** Intercepta e barra requisições para domínios classificados como perda de tempo.
+- **Arquitetura Manifest V3:** Código estritamente alinhado com as políticas de segurança, privacidade e performance (baixo consumo de memória) impostas pelo Google para 2024+.
+- **Processamento em Service Workers:** Mantém *listeners* assíncronos eficientes trabalhando em segundo plano sem impactar o desempenho do navegador.
+- **Injeção de Código (Content Scripts):** Aplica regras de CSS e lógicas JavaScript ativamente nas abas carregadas para esconder elementos específicos.
+- **Popup UI Intuitivo:** Painel de controle simples e limpo, gerenciado pelo ícone da extensão para controle rápido das regras.
 
-## 🛠️ Architecture
+## 🛠️ Arquitetura
 
-- **`manifest.json`**: The heart of the extension, configured for Manifest V3 permissions (`declarativeNetRequest`, `storage`, `activeTab`, etc.).
-- **`background.js`**: The service worker handling URL matching, storage state, and alarm triggers.
-- **`content.js` & `content.css`**: Injected directly into web pages to enforce focus limits and visual changes.
-- **`popup/`**: The HTML/JS/CSS files that render when the extension icon is clicked.
+- **`manifest.json`**: O núcleo de regras da extensão, responsável por habilitar as permissões de `declarativeNetRequest`, `storage`, e `activeTab`.
+- **`background.js`**: O Worker que lida com o roteamento, monitoramento de abas e controle de alarmes de tempo.
+- **`content.js` & `content.css`**: Arquivos de linha de frente, injetados dinamicamente para transformar o visual e bloquear gatilhos visuais das páginas proibidas.
+- **`popup/`**: Interface modular (HTML, JS, CSS) ativada apenas durante o clique do usuário, liberando memória logo em seguida.
 
-## 📦 Installation (Developer Mode)
+## 📦 Instalação Manual (Modo Desenvolvedor)
 
-1. Clone the repository:
-   ```cmd
-   git clone https://github.com/yourusername/FocusGuardExt.git
-   cd FocusGuardExt
-   ```
-2. Open Google Chrome and navigate to `chrome://extensions/`.
-3. Enable **Developer mode** in the top right corner.
-4. Click **Load unpacked** and select the `FocusGuardExt` directory.
-5. The extension will now appear in your browser toolbar.
+1. Faça o Download da versão mais recente na aba de Releases (botão acima) e extraia o `.zip`.
+2. Acesse a barra de endereços do Google Chrome e digite: `chrome://extensions/`.
+3. No canto superior direito, ative a chave do **Modo do desenvolvedor** (Developer mode).
+4. Clique no botão **Carregar sem compactação** (Load unpacked).
+5. Selecione a pasta onde você extraiu o arquivo `FocusGuardExt`. A extensão aparecerá na sua barra de ferramentas pronta para uso!
 
-## 📝 License
+## 📝 Licença
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distribuído sob a Licença MIT.
