@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="../icons/icon128.png" width="28" height="28" alt="FocusGuard">
+        <h1>Focus<span>Guard</span></h1>
+      </div>
+      <span class="version">v1.3</span>
+    </header>
+    
+    <div id="setup-view">
+      <div class="tabs">
+        <button class="tab active" data-target="moderate-mode">⏱ Moderado</button>
+        <button class="tab" data-target="extreme-mode">🔥 Extremo</button>
+        <button class="tab" data-target="focus-list-mode">📋 Foco</button>
+      </div>
+
+      <!-- ========== MODERADO ========== -->
+      <div id="moderate-mode" class="tab-content active">
+        <div class="section-card">
+          <div class="toggle-row">
+            <label class="toggle-label">
+              <input type="checkbox" id="global-limit-mod">
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-text">Pote Global de Tempo</span>
+          </div>
+
+          <div id="mod-global-container" class="input-group hidden" style="margin-top: 10px;">
+            <label>Limite Global <span>(minutos)</span></label>
+            <input type="number" id="mod-global-time" value="90" min="1">
+          </div>
+        </div>
+
+        <div id="mod-sites-container" class="sites-list"></div>
+
+        <div class="add-site-row">
+          <input type="text" id="new-site-input" placeholder="Adicionar site (ex: tiktok.com)">
+          <button class="btn-add" id="btn-add-site">+</button>
+        </div>
+
+        <div class="section-card reward-card">
+          <h3>🏆 Recompensa por Estudo</h3>
+          <p class="desc-sm">Assista conteúdo de Estudo/Trabalho para resetar o timer.</p>
+          <div class="reward-inputs">
+            <div class="input-group compact">
+              <label>Estudar <span>(min)</span></label>
+              <input type="number" id="reward-focus" value="60" min="1">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== EXTREMO ========== -->
+      <div id="extreme-mode" class="tab-content">
+        <p class="desc">Defina o limite de itens consumidos por site.</p>
+        <div id="ext-sites-container" class="sites-list"></div>
+
+        <div class="section-card reward-card">
+          <h3>🏆 Recompensa por Estudo</h3>
+          <p class="desc-sm">Assista conteúdo de Estudo/Trabalho para resetar os contadores.</p>
+          <div class="reward-inputs">
+            <div class="input-group compact">
+              <label>Estudar <span>(min)</span></label>
+              <input type="number" id="reward-focus-ext" value="60" min="1">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== LISTA DE FOCO ========== -->
+      <div id="focus-list-mode" class="tab-content">
+        <p class="desc">Conteúdo com estas palavras no título não será bloqueado.</p>
+        
+        <div class="focus-section">
+          <h3>🎵 Música / Entretenimento</h3>
+          <div class="tags-container" id="tags-music"></div>
+          <div class="add-tag-row">
+            <input type="text" id="new-tag-music" placeholder="Nova palavra...">
+            <button class="btn-add" data-category="music">+</button>
+          </div>
+        </div>
+
+        <div class="focus-section">
+          <h3>📚 Estudo / Trabalho</h3>
+          <div class="tags-container" id="tags-study"></div>
+          <div class="add-tag-row">
+            <input type="text" id="new-tag-study" placeholder="Nova palavra...">
+            <button class="btn-add" data-category="study">+</button>
+          </div>
+        </div>
+
+        <div class="focus-section">
+          <h3>🔧 Personalizado</h3>
+          <div class="tags-container" id="tags-custom"></div>
+          <div class="add-tag-row">
+            <input type="text" id="new-tag-custom" placeholder="Nova palavra...">
+            <button class="btn-add" data-category="custom">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========== OPÇÕES GLOBAIS ========== -->
+      <div class="options-section">
+        <div class="option-row">
+          <label class="toggle-label"><input type="checkbox" id="sound-notification-checkbox" checked><span class="toggle-slider"></span></label>
+          <span>Som de notificação</span>
+        </div>
+        <div class="option-row">
+          <label class="toggle-label"><input type="checkbox" id="hide-distractions-checkbox" checked><span class="toggle-slider"></span></label>
+          <span>Filtrar vídeos distrativos</span>
+        </div>
+        <div class="option-row">
+          <label class="toggle-label"><input type="checkbox" id="lock-checkbox"><span class="toggle-slider"></span></label>
+          <span>Travar configurações</span>
+        </div>
+        <div id="lock-days-container" class="hidden" style="padding: 0 16px 8px;">
+          <div class="input-group compact">
+            <label>Duração <span>(dias)</span></label>
+            <input type="number" id="lock-days" value="7" min="1">
+          </div>
+        </div>
+      </div>
+
+      <button id="start-btn" class="btn-primary">⚡ Ativar Foco</button>
+    </div>
+
+    <!-- ========== VISÃO ATIVA ========== -->
+    <div id="active-view" class="hidden">
+      <div class="status-circle">
+        <div class="pulse"></div>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+      </div>
+      <h2>Sistema Ativo</h2>
+      <p id="active-mode-label" class="mode-label">Modo: Moderado</p>
+      
+      <div id="active-stats" class="stats-container"></div>
+
+      <div class="option-row" style="margin-top: 12px;">
+        <label class="toggle-label"><input type="checkbox" id="hide-distractions-active" checked><span class="toggle-slider"></span></label>
+        <span>Filtrar vídeos distrativos</span>
+      </div>
+
+      <div class="warning-box">
+        Feche esta janela e vá trabalhar. Suas redes estão sendo monitoradas.
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
