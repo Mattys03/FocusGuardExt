@@ -9,6 +9,7 @@
 ![Platform](https://img.shields.io/badge/Plataforma-Google%20Chrome-blue)
 ![Tech](https://img.shields.io/badge/Tecnologia-Manifest%20V3%20%7C%20JavaScript-green)
 ![License](https://img.shields.io/badge/Licen%C3%A7a-MIT-purple)
+[![JS Check CI](https://github.com/Mattys03/FocusGuardExt/actions/workflows/js-check.yml/badge.svg)](https://github.com/Mattys03/FocusGuardExt/actions/workflows/js-check.yml)
 
 **FocusGuard** é uma extensão robusta de produtividade construída sob o padrão **Manifest V3** da Chrome Web Store. Ela foi arquitetada para bloquear distrações online e garantir sessões de "Deep Work" (Foco Profundo) utilizando recursos avançados de *Service Workers* em background e manipulação em tempo real da árvore DOM (Document Object Model).
 
